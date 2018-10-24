@@ -8,7 +8,7 @@ internal class GridManagerTest {
     fun  `should not change cells if all cells are dead`()
     {
         val gridManager = GridManager()
-        val grid = mutableListOf(mutableListOf<Cell>());
+        val grid = initializeGrid(3, 3);
         val newGrid = gridManager.getNewState(grid);
 
         assertThat(newGrid[0][0].alive).isFalse();
@@ -19,7 +19,7 @@ internal class GridManagerTest {
     {
         val gridManager = GridManager()
 
-        val grid = InitializeGrid(3, 3);
+        val grid = initializeGrid(3, 3);
         grid[0][2].alive = true;
         grid[1][1].alive = true;
         grid[2][0].alive = true;
@@ -34,7 +34,7 @@ internal class GridManagerTest {
     {
         val gridManager = GridManager()
 
-        val grid = InitializeGrid(2, 4);
+        val grid = initializeGrid(2, 4);
         grid[1][0].alive = true;
         grid[1][1].alive = true;
         grid[1][2].alive = true;
@@ -50,7 +50,7 @@ internal class GridManagerTest {
     {
         val gridManager = GridManager()
 
-        val grid = InitializeGrid(2, 3);
+        val grid = initializeGrid(2, 3);
         grid[0][1].alive = true;
         grid[1][0].alive = true;
         grid[1][1].alive = true;
@@ -65,7 +65,7 @@ internal class GridManagerTest {
     {
         val gridManager = GridManager()
 
-        val grid = InitializeGrid(4, 3);
+        val grid = initializeGrid(4, 3);
         grid[0][2].alive = true;
         grid[1][1].alive = true;
         grid[2][0].alive = true;
@@ -84,7 +84,7 @@ internal class GridManagerTest {
 
         val h = 2;
         val w = 3;
-        val grid = InitializeGrid(h, w);
+        val grid = initializeGrid(h, w);
         grid[0][1].alive = true;
         grid[1][0].alive = true;
         grid[1][1].alive = true;
@@ -94,7 +94,7 @@ internal class GridManagerTest {
         assertThat(nbNeighbours).isEqualTo(2);
     }
 
-    fun InitializeGrid(h: Int, w: Int): List<List<Cell>>
+    fun initializeGrid(h: Int, w: Int): List<List<Cell>>
     {
         return (0..w).map { (0..h).map { Cell(false) } }
     }
