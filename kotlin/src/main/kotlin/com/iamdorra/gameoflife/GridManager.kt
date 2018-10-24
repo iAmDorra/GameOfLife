@@ -4,61 +4,68 @@ internal class GridManager
 {
     fun getNewState(grid: List<List<Cell>>): List<List<Cell>>
     {
-        var newGrid = (0..grid.size).map { (0..grid[0].size).map { Cell(false) } }
+        var newGrid = mutableListOf<List<Cell>>()
+        (0..grid.size).forEach {
+            val cells = mutableListOf<Cell>()
+            (0..grid[0].size).forEach {
+                cells.add(Cell(false))
+            }
+            newGrid.add(cells)
+        }
         (0..grid.size).forEach { i ->
             (0..grid[0].size).forEach { j ->
-                var nbNeighbours = countNeighbours(grid, i, j);
+                var nbNeighbours = countNeighbours(grid, i, j)
                 if (nbNeighbours == 2)
                 {
-                    newGrid[i][j].alive = grid[i][j].alive;
+                    newGrid[i][j].alive = grid[i][j].alive
                 }
                 else if (nbNeighbours == 3)
                 {
-                    newGrid[i][j].alive = true;
+                    newGrid[i][j].alive = true
                 }
             }
         }
 
-        return newGrid;
+        return newGrid
     }
 
     fun countNeighbours(grid: List<List<Cell>>, i: Int, j: Int): Int
     {
-        var nbNeighbours = 0;
+        var nbNeighbours = 0
         if (isAliveNeighbour(grid, i - 1, j - 1))
         {
-            nbNeighbours++;
+            nbNeighbours++
         }
         if (isAliveNeighbour(grid, i, j - 1))
         {
-            nbNeighbours++;
+            nbNeighbours++
         }
         if (isAliveNeighbour(grid, i + 1, j - 1))
         {
-            nbNeighbours++;
+            nbNeighbours++
         }
         if (isAliveNeighbour(grid, i - 1, j))
         {
-            nbNeighbours++;
+            nbNeighbours++
         }
         if (isAliveNeighbour(grid, i + 1, j))
         {
-            nbNeighbours++;
+            nbNeighbours++
         }
         if (isAliveNeighbour(grid, i - 1, j + 1))
         {
-            nbNeighbours++;
+            nbNeighbours++
         }
         if (isAliveNeighbour(grid, i, j + 1))
         {
-            nbNeighbours++;
+            nbNeighbours++
         }
         if (isAliveNeighbour(grid, i + 1, j + 1))
         {
-            nbNeighbours++;
+            nbNeighbours++
         }
 
-        return nbNeighbours;
+        return nbNeighbours
     }
 
     fun isAliveNeighbour(grid: List<List<Cell>>, i: Int, j: Int): Boolean
@@ -67,7 +74,7 @@ internal class GridManager
                 j < grid[0].size &&
                 i >= 0 &&
                 i < grid.size &&
-                grid[i][j].alive;
+                grid[i][j].alive
     }
 }
 

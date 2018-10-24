@@ -8,10 +8,10 @@ internal class GridManagerTest {
     fun  `should not change cells if all cells are dead`()
     {
         val gridManager = GridManager()
-        val grid = initializeGrid(3, 3);
-        val newGrid = gridManager.getNewState(grid);
+        val grid = initializeGrid(3, 3)
+        val newGrid = gridManager.getNewState(grid)
 
-        assertThat(newGrid[0][0].alive).isFalse();
+        assertThat(newGrid[0][0].alive).isFalse()
     }
 
     @Test
@@ -19,14 +19,14 @@ internal class GridManagerTest {
     {
         val gridManager = GridManager()
 
-        val grid = initializeGrid(3, 3);
-        grid[0][2].alive = true;
-        grid[1][1].alive = true;
-        grid[2][0].alive = true;
+        val grid = initializeGrid(3, 3)
+        grid[0][2].alive = true
+        grid[1][1].alive = true
+        grid[2][0].alive = true
 
-        val newGrid = gridManager.getNewState(grid);
+        val newGrid = gridManager.getNewState(grid)
 
-        assertThat(newGrid[1][1].alive).isTrue();
+        assertThat(newGrid[1][1].alive).isTrue()
     }
 
     @Test
@@ -34,15 +34,15 @@ internal class GridManagerTest {
     {
         val gridManager = GridManager()
 
-        val grid = initializeGrid(2, 4);
-        grid[1][0].alive = true;
-        grid[1][1].alive = true;
-        grid[1][2].alive = true;
+        val grid = initializeGrid(2, 4)
+        grid[1][0].alive = true
+        grid[1][1].alive = true
+        grid[1][2].alive = true
 
-        val newGrid = gridManager.getNewState(grid);
+        val newGrid = gridManager.getNewState(grid)
 
-        assertThat(newGrid[1][0].alive).isFalse();
-        assertThat(newGrid[1][2].alive).isFalse();
+        assertThat(newGrid[1][0].alive).isFalse()
+        assertThat(newGrid[1][2].alive).isFalse()
     }
 
     @Test
@@ -50,14 +50,14 @@ internal class GridManagerTest {
     {
         val gridManager = GridManager()
 
-        val grid = initializeGrid(2, 3);
-        grid[0][1].alive = true;
-        grid[1][0].alive = true;
-        grid[1][1].alive = true;
+        val grid = initializeGrid(2, 3)
+        grid[0][1].alive = true
+        grid[1][0].alive = true
+        grid[1][1].alive = true
 
-        val newGrid = gridManager.getNewState(grid);
+        val newGrid = gridManager.getNewState(grid)
 
-        assertThat(newGrid[0][0].alive).isTrue();
+        assertThat(newGrid[0][0].alive).isTrue()
     }
 
     @Test
@@ -65,16 +65,16 @@ internal class GridManagerTest {
     {
         val gridManager = GridManager()
 
-        val grid = initializeGrid(4, 3);
-        grid[0][2].alive = true;
-        grid[1][1].alive = true;
-        grid[2][0].alive = true;
-        grid[2][1].alive = true;
-        grid[2][2].alive = true;
+        val grid = initializeGrid(4, 3)
+        grid[0][2].alive = true
+        grid[1][1].alive = true
+        grid[2][0].alive = true
+        grid[2][1].alive = true
+        grid[2][2].alive = true
 
-        val newGrid = gridManager.getNewState(grid);
+        val newGrid = gridManager.getNewState(grid)
 
-        assertThat(newGrid[1][1].alive).isFalse();
+        assertThat(newGrid[1][1].alive).isFalse()
     }
 
     @Test
@@ -82,16 +82,16 @@ internal class GridManagerTest {
     {
         val gridManager = GridManager()
 
-        val h = 2;
-        val w = 3;
-        val grid = initializeGrid(h, w);
-        grid[0][1].alive = true;
-        grid[1][0].alive = true;
-        grid[1][1].alive = true;
+        val h = 2
+        val w = 3
+        val grid = initializeGrid(h, w)
+        grid[0][1].alive = true
+        grid[1][0].alive = true
+        grid[1][1].alive = true
 
-        val nbNeighbours = gridManager.countNeighbours(grid, 0, 1);
+        val nbNeighbours = gridManager.countNeighbours(grid, 0, 1)
 
-        assertThat(nbNeighbours).isEqualTo(2);
+        assertThat(nbNeighbours).isEqualTo(2)
     }
 
     fun initializeGrid(h: Int, w: Int): List<List<Cell>>
