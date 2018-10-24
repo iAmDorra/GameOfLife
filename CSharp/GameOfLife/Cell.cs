@@ -1,12 +1,12 @@
-﻿namespace GameOfLife.Tests
+﻿namespace GameOfLife
 {
-    internal class Cell
+    public class Cell
     {
         public Cell(bool isAlive)
         {
             this.IsAlive = isAlive;
         }
 
-        public bool IsAlive { get; internal set; }
+        public bool IsAlive { get; set; }
     }
 }
