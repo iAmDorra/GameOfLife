@@ -14,12 +14,12 @@ namespace GameOfLife.Tests
 
             Check.That(newGrid[0, 0].IsAlive).IsFalse();
         }
-        
+
         [Fact]
         public void Should_not_kill_cell_if_it_has_two_neighbours()
         {
             GridManager gridManager = new GridManager();
-            
+
             Cell[,] grid = InitializeGrid(3, 3);
             grid[0, 2].IsAlive = true;
             grid[1, 1].IsAlive = true;
@@ -34,7 +34,7 @@ namespace GameOfLife.Tests
         public void Should_kill_cell_if_it_has_less_than_two_neighbours()
         {
             GridManager gridManager = new GridManager();
-            
+
             Cell[,] grid = InitializeGrid(2, 4);
             grid[1, 0].IsAlive = true;
             grid[1, 1].IsAlive = true;

@@ -1,8 +1,8 @@
-﻿namespace GameOfLife.Tests
+﻿namespace GameOfLife
 {
-    internal class GridManager
+    public class GridManager
     {
-        internal Cell[,] GetNewState(Cell[,] grid)
+        public Cell[,] GetNewState(Cell[,] grid)
         {
             var newGrid = new Cell[grid.GetLength(0), grid.GetLength(1)];
             for (int i = 0; i < grid.GetLength(0); i++)
@@ -30,8 +30,8 @@
             }
             return newGrid;
         }
-        
-        internal int CountNeighbours(Cell[,] grid, int i, int j)
+
+        public int CountNeighbours(Cell[,] grid, int i, int j)
         {
             int nbNeighbours = 0;
             if (IsAliveNeighbour(grid, i - 1, j - 1))
