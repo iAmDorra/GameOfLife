@@ -1,0 +1,22 @@
+{
+  "name": "gameoflife",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iAmDorra/GameOfLife.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iAmDorra/GameOfLife/issues"
+  },
+  "homepage": "https://github.com/iAmDorra/GameOfLife#readme",
+  "devDependencies": {
+    "@types/jest": "^23.3.7",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.4",
+    "typescript": "^3.1.3"
+  }
+}
