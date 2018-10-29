@@ -34,28 +34,28 @@ func GetNewState(grid [][]Cell) [][]Cell {
 func CountNeighbours(grid [][]Cell, i, j int) int {
 	nbNeighbours := 0
 
-	if IsAliveNeighbour(grid, i - 1, j - 1) {
+	if IsAliveNeighbour(grid, i-1, j-1) {
 		nbNeighbours++
 	}
-	if IsAliveNeighbour(grid, i, j - 1) {
+	if IsAliveNeighbour(grid, i, j-1) {
 		nbNeighbours++
 	}
-	if IsAliveNeighbour(grid, i + 1, j - 1) {
+	if IsAliveNeighbour(grid, i+1, j-1) {
 		nbNeighbours++
 	}
-	if IsAliveNeighbour(grid, i - 1, j) {
+	if IsAliveNeighbour(grid, i-1, j) {
 		nbNeighbours++
 	}
-	if IsAliveNeighbour(grid, i + 1, j) {
+	if IsAliveNeighbour(grid, i+1, j) {
 		nbNeighbours++
 	}
-	if IsAliveNeighbour(grid, i - 1, j + 1) {
+	if IsAliveNeighbour(grid, i-1, j+1) {
 		nbNeighbours++
 	}
-	if IsAliveNeighbour(grid, i, j + 1) {
+	if IsAliveNeighbour(grid, i, j+1) {
 		nbNeighbours++
 	}
-	if IsAliveNeighbour(grid, i + 1, j + 1) {
+	if IsAliveNeighbour(grid, i+1, j+1) {
 		nbNeighbours++
 	}
 
