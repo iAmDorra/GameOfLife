@@ -1,1 +1,2 @@
-tox
+# Python PIP (package manager) required dependencies
+pytest
