@@ -1,7 +1,7 @@
-import Cell from './Cell';
-import GridManager from './GridManager';
+import Cell from '../src/Cell';
+import GridManager from '../src/GridManager';
 
-describe('UnitTest1', ()  =>
+describe('GridManager', ()  =>
 {
     it('Should not change cells if all cells are dead', () =>
     {
