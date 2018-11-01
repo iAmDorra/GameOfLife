@@ -2,16 +2,17 @@
 
 (define grid-type 'grid)
 
-(define (make-grid width height)
-    (list grid-type width height (list->vector (make-cell-list (* width height)))))
+(define (make-grid h w)
+    (list grid-type h w (list->vector (make-cell-list (* h w)))))
 
 ;; private
 (define (make-cell-list size)
-    (if (= size 0)
+    (if (zero? size)
         '()
         (cons (make-cell #f)
               (make-cell-list (- size 1)))))
 
+;; private
 (define (is-instance-grid grid)
     (and (list? grid)
          (= 4 (length grid))
@@ -19,13 +20,13 @@
 
 (define (grid-width grid)
     (if (is-instance-grid grid)
-        (cadr grid)
+        (caddr grid)
         (error "Argument is not a Grid -- grid-width")))
 
 (define (grid-height grid)
     (if (is-instance-grid grid)
-        (caddr grid)
+        (cadr grid)
         (error "Argument is not a Grid -- grid-height")))
 
-(define (grid-get grid x y)
-    (vector-ref (cadddr grid) (+ (* (grid-width grid) y) x)))
+(define (grid-get grid i j)
+    (vector-ref (cadddr grid) (+ (* (grid-width grid) i) j)))

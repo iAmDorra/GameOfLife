@@ -3,10 +3,10 @@
 (define (make-cell is-alive)
     (cons cell-type is-alive))
 
+;; private
 (define (is-instance-cell cell)
     (and (pair? cell)
-         (eq? (car cell)
-              cell-type)))
+         (eq? cell-type (car cell))))
 
 (define (cell-is-alive cell)
     (if (is-instance-cell cell)
