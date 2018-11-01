@@ -19,7 +19,8 @@
         #t))
 
 (define (assert msg condition)
-    (lambda () (check msg condition)))
+    (lambda ()
+        (check msg condition)))
 
 ;; extensions
 
@@ -61,14 +62,14 @@
 
 (define (assert-inexact= expected actual delta)
     (assert (make-message "in range "
-                         (interval->string expected delta)
-                         (number->string actual))
+                          (interval->string expected delta)
+                          (number->string actual))
             (interval-inside? expected delta actual)))
 
 (define (assert-list= to-string eq-op expected-list actual-list)
     (define (item i)
-        (string-append (number->string i) ". item "))
-
+        (string-append (number->string i)
+                       ". item "))
     (define (check-list-element i expected actual)
         (let* ((no-more?   (null? expected))
                (has-more?  (null? actual))
@@ -81,35 +82,32 @@
                                                   "more elements"
                                                   "no more elements")))
                   (else       (check-element i expected actual)))))
-
     (define (check-element i expected actual)
         (let* ((expected-element (car expected))
                (actual-element   (car actual))
                (sublist?         (pair? expected-element))
                (no-sublist?      (pair? actual-element))
                (both-pair?       (and sublist? no-sublist?)))
-           (cond
-              (both-pair?  (check-list-element (+ (* i 10) 1)
-                                               expected-element
-                                               actual-element))
-              (sublist?    (fail (make-message (item i)
-                                               "a sublist"
-                                               "no sublist")))
-              (no-sublist? (fail (make-message (item i)
-                                               "no sublist"
-                                               "a sublist")))
-              (else        (cons ; dummy chaining
-                               (check-numbered i expected-element actual-element)
-                               (check-list-element (+ i 1)
-                                                   (cdr expected)
-                                                   (cdr actual)))))))
-
+            (cond (both-pair?  (check-list-element (+ (* i 10)
+                                                      1)
+                                                   expected-element
+                                                   actual-element))
+                  (sublist?    (fail (make-message (item i)
+                                                   "a sublist"
+                                                   "no sublist")))
+                  (no-sublist? (fail (make-message (item i)
+                                                   "no sublist"
+                                                   "a sublist")))
+                  (else        (cons   ; dummy chaining
+                                     (check-numbered i expected-element actual-element)
+                                     (check-list-element (+ i 1)
+                                                         (cdr expected)
+                                                         (cdr actual)))))))
     (define (check-numbered i expected actual)
         (check (make-message (item i)
                              (to-string expected)
                              (to-string actual))
                (eq-op expected actual)))
-
     (lambda ()
         (check-list-element 1 expected-list actual-list)))
 
@@ -129,11 +127,15 @@
             (not actual)))
 
 (define (assert-null actual)
-    (assert (make-message "" "null" "not null")
+    (assert (make-message ""
+                          "null"
+                          "not null")
             (null? actual)))
 
 (define (assert-not-null actual)
-    (assert (make-message "" "not null" "null")
+    (assert (make-message ""
+                          "not null"
+                          "null")
             (not (null? actual))))
 
 (define (assert-raise expected-ex body)
@@ -142,16 +144,14 @@
               ((string? ex)          ex)
               ((error-exception? ex) (error-exception->string (error-exception-message ex)))
               (else                  ""))) ; cannot determine message
-
     (lambda ()
-        (with-exception-catcher
-            (lambda (ex)
-                (let ((expected-message (error-exception->string expected-ex))
-                      (actual-message   (error-exception->string ex)))
-                    (check
-                        (make-string-message "raise " error-exception->string expected-ex ex)
-                        (string=? expected-message actual-message))))
-            (lambda () (fail (body))))))
+        (with-exception-catcher (lambda (ex)
+                                    (let ((expected-message (error-exception->string expected-ex))
+                                          (actual-message   (error-exception->string ex)))
+                                        (check (make-string-message "raise " error-exception->string expected-ex ex)
+                                               (string=? expected-message actual-message))))
+                                (lambda ()
+                                    (fail (body))))))
 
 ;; private
 (define (test-case-name name)
@@ -165,7 +165,9 @@
 
 (define (test-case name . assertions)
     (test-case-name name)
-    (for-each (lambda (a) (a)) assertions)
+    (for-each (lambda (a)
+                  (a))
+              assertions)
     (test-case-success))
 
 ;; private
