@@ -6,6 +6,6 @@
     (assert-true (cell-is-alive (make-cell #t)))
     (assert-false (cell-is-alive (make-cell #f))))
 
-(test-case "(cell-set-aliv)"
+(test-case "(cell-set-alive)"
     (assert-true (cell-is-alive (cell-set-alive (make-cell #f) #t)))
     (assert-false (cell-is-alive (cell-set-alive (make-cell #t) #f))))
