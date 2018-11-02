@@ -1,20 +1,19 @@
-(define cell-type 'cell)
+(define cell-type-signature 'Cell)
 
-(define (make-cell is-alive)
-    (cons cell-type is-alive))
+(define (make-cell is-alive)           ; constructor
+    (cons cell-type-signature is-alive))
 
-;; private
-(define (is-instance-cell cell)
+(define (cell? cell)
     (and (pair? cell)
-         (eq? cell-type (car cell))))
+         (eq? cell-type-signature (car cell))))
 
-(define (cell-is-alive cell)
-    (if (is-instance-cell cell)
+(define (cell-is-alive cell)           ; getter
+    (if (cell? cell)
         (cdr cell)
         (error "Argument is not a Cell -- cell-is-alive")))
 
-(define (cell-set-alive cell is-alive)
-    (if (is-instance-cell cell)
+(define (set-cell-alive! cell is-alive) ; setter
+    (if (cell? cell)
         (set-cdr! cell is-alive)
-        (error "Argument is not a Cell -- cell-set-alive"))
+        (error "Argument is not a Cell -- set-cell-alive!"))
     cell)

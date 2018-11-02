@@ -1,16 +1,18 @@
 (include "assert.scm")
 (include "../game-of-life/grid.scm")
 
-(test-case "(make-grid)"
-    (assert-true (is-instance-grid (make-grid 1 1)))
+(test-case "(grid?)"
+    (assert-true (grid? (make-grid 1 1))))
+
+(test-case "Grid accessors"
     (assert= 3 (grid-width (make-grid 2 3)))
     (assert= 2 (grid-height (make-grid 2 3))))
 
 (test-case "(grid-get)"
     (assert-false (cell-is-alive (grid-get (make-grid 3 2) 0 0))))
 
-(test-case "(grid-set)"
+(test-case "Grid is mutable"
     (let ((grid (make-grid 3 2)))
         (assert-false (cell-is-alive (grid-get grid 2 1)))
-        (cell-set-alive (grid-get grid 2 1) #t)
+        (set-cell-alive! (grid-get grid 2 1) #t)
         (assert-true (cell-is-alive (grid-get grid 2 1)))))
