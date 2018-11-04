@@ -1,13 +1,13 @@
-GameOfLife ES6
-==============
+GameOfLife JavaScript
+=====================
 
-This is modern JavaScript (ES7) with Jest.
+This is modern JavaScript with Jest.
 
 
 Prerequisites
 -------------
 
-[Node.js](https://nodejs.org/en/download/) v6 must be installed.
+[Node.js](https://nodejs.org/en/download/) v6 or newer must be installed.
 
 
 Installation
