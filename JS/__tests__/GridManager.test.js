@@ -1,5 +1,5 @@
-import Cell from './Cell';
-import GridManager from './GridManager';
+import Cell from '../src/Cell';
+import GridManager from '../src/GridManager';
 
 describe('UnitTest1', ()  =>
 {
@@ -15,7 +15,7 @@ describe('UnitTest1', ()  =>
     it('Should not kill cell if it has two neighbours', () =>
     {
         let gridManager = new GridManager();
-        
+
         let grid = initializeGrid(3, 3);
         grid[0][2].isAlive = true;
         grid[1][1].isAlive = true;
@@ -29,7 +29,7 @@ describe('UnitTest1', ()  =>
     it('Should kill cell if it has less than two neighbours', () =>
     {
         let gridManager = new GridManager();
-        
+
         let grid = initializeGrid(2, 4);
         grid[1][0].isAlive = true;
         grid[1][1].isAlive = true;

@@ -1,12 +1,9 @@
 {
   "name": "gameoflife",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "jest"
   },
-  "author": "",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.3",
