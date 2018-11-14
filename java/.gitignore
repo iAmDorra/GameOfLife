@@ -1,3 +1,10 @@
+-# Mac
+-.DS_Store
+-
+-# Windows
+-Thumbs.db
+-
+-# WebStorm
 .idea
 target
 *.iml
